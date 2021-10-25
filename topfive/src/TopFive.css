@@ -1,0 +1,63 @@
+/* body{
+ background-color: #fafafa;
+} */
+.chart{
+    margin: 3%;
+    padding: 3%;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.date{
+    border: 1px solid blue;
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: flex-end;
+}
+.dateText{
+    border: 1px solid black;
+    width: 20%;
+    /* justify-content: flex-end; */
+}
+.header{
+    border: 1px solid red;
+}
+.title{
+    border: 1px solid green;
+}
+.refresh{
+    border: 1px solid orange;
+}
+.selectors{
+    border: 1px solid purple;
+}
+.brand{
+    border: 1px solid grey;
+}
+.topFive{
+    border: 1px solid powderblue;
+}
+.first{
+    border: 1px solid yellow;
+}
+.second{
+    border: 1px solid goldenrod;
+}
+.third{
+    border: 1px solid yellow;
+}
+.fourth{
+    border: 1px solid goldenrod;
+}
+.fifth{
+    border: 1px solid yellow;
+}
+.image{
+    border: 1px solid pink;
+}
+.post{
+    border: 1px solid sienna;
+}
