@@ -2,6 +2,8 @@ import React from "react";
 
 const BarChart = () => {
     return (
-        <div></div>
+        <div>Bar Chart</div>
     )
 }
+
+export default BarChart;

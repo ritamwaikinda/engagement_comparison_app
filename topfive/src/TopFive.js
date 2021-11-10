@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import Loader from '../../components/Loader';
+import axios from 'axios';
+import Loader from '../../components/Loader';
 import './TopFive.css';
 import Date from './Components/Date.jsx';
 
-//don't forget to make this suuuuper accessible
-
-// const Matches = () => {
-//     const [match, setMatch] = useState('');
-//     const [brand, setBrand] = useState('');
-//     const [brandDropdown, setBrandDropdown] = useState('');
-//     const [post, setPost] = useState('');
-//     const [isLoading, setIsLoading] = useState(true);
-
-//     useEffect(() => {
-//         axios
-//           .get(`/api/users/matches/`, { withCredentials: true })
-//           .then((response) => {
-//             setMatch(response.data);
-//           })
-//           .catch((error) => {
-//             console.log(error);
-//           })
-//           .finally(() => {
-//             setIsLoading(false);
-//           });
-//       }, []);
-
-
-
+//don't forget to make this suuuuper accessible (alt tage etc)
 function TopFive() {
+
+    const [top, setTop] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        axios
+          .get(`/api/users/matches/`, { withCredentials: true })
+          .then((response) => {
+            setTop(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+          .finally(() => {
+            setIsLoading(false);
+          });
+      }, []);
+
+
+    if (isLoading) return <Loader />;
+
     const date = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full'}).format(new Date())
 
 
@@ -51,37 +48,40 @@ function TopFive() {
                 </form>
 
                 <div className="topFive">
+                    <div className="top">
+                        {top ? 
+                        (
+                        top.map((match) => {
+                            return (
 
-                    <div className="ranking" id="first">
-                        <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
-                        <div className="post"></div>
+                            <div className="ranking" id={top.indexId}>
+                                <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
+                                <div className="brand">{top.brand}</div>
+                                <div className="date">{top.date}</div>
+                                <div className="postPreview">{top.postprev}</div>
+                                <div className="engscore">{top.engscore}</div>
+                                <div className="increase">{top.increase}</div>
+                            </div>
+                            
+                            )})) : (<Loader />)};
                     </div>
-
-                    <div className="ranking" id="second">
-                        <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
-                        <div className="post"></div>
-                    </div>
-
-                    <div className="ranking" id="third">
-                        <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
-                        <div className="post"></div>
-                    </div>
-
-                    <div className="ranking" id="fourth">
-                        <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
-                        <div className="post"></div>
-                    </div>
-
-                    <div className="ranking" id="fifth">
-                        <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
-                        <div className="post"></div>
-                    </div>
-                    
                 </div>
+
+            <div className="button">
+            <span className="buttonText">Go To Comparison Charts</span>
             </div>
+            <div className="footer"></div>
+            
             </div>
         </div>
+    </div>
     )
 }
 
 export default TopFive;
+
+
+
+
+
+
