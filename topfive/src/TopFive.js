@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Loader from '../../components/Loader';
+import Loader from './Components/Loader';
 import './TopFive.css';
+
 import Date from './Components/Date.jsx';
+
+// let user_token = process.env.USER_TOKEN;
+const page_token = process.env.PAGE_TOKEN;
 
 //don't forget to make this suuuuper accessible (alt tage etc)
 function TopFive() {
@@ -12,7 +16,7 @@ function TopFive() {
 
     useEffect(() => {
         axios
-          .get(`/api/users/matches/`, { withCredentials: true })
+          .get(`https://graph.facebook.com/v12.0/10101400138573354?fields=id,name,app_id&access_token=EAARmuEuuogkBAMI1Fra0y3fItDPLUKZAthKsKhmROoZBVzVGeInwLYWbZB95GtVKKx8BT4481XmEiZCXTBVyIH82p6ZAQWZCtox3vjwdzZC5PhPyqNWDGUETgB3UZBw7844SkdgiLmYeprwLB1OfokYJJAIkibpnrp4iNmxGCwdn3M96fGKBEg8iVw9oieybUl0OhCVZCBTNAUldqsG3sxWAh8vuNZAS5TVaEZD`)
           .then((response) => {
             setTop(response.data);
           })
@@ -51,19 +55,22 @@ function TopFive() {
                     <div className="top">
                         {top ? 
                         (
-                        top.map((match) => {
-                            return (
+                            <div className="ranking" id={top.id || top.name}>
 
-                            <div className="ranking" id={top.indexId}>
                                 <div className="image" alt="this is the image that accompanied the post" /*can you find ai to auto read the image?*/>No image</div>
-                                <div className="brand">{top.brand}</div>
-                                <div className="date">{top.date}</div>
-                                <div className="postPreview">{top.postprev}</div>
-                                <div className="engscore">{top.engscore}</div>
-                                <div className="increase">{top.increase}</div>
+
+                                <div className="brand">{top.brand || top.name}</div>
+
+                                <div className="date">{top.date || top.name}</div>
+
+                                <div className="postPreview"  href={top.link || top.name}>{top.postprev || top.name}</div>
+
+                                <div className="engscore">{top.engscore || top.name}</div>
+
+                                <div className="increase">{top.increase || "Increase"}</div>
                             </div>
                             
-                            )})) : (<Loader />)};
+                            ) : (<Loader />)};
                     </div>
                 </div>
 
