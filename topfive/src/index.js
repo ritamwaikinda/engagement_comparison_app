@@ -6,6 +6,7 @@ import TopFive from './TopFive';
 
 ReactDOM.render(
   <React.StrictMode>
+  {/* <App /> */}
   <TopFive />
   </React.StrictMode>,
   document.getElementById('root')
