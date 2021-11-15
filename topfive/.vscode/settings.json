@@ -1,3 +1,7 @@
 {
-    "javascript.preferences.quoteStyle": "double"
+    "javascript.preferences.quoteStyle": "double",
+    "html-css-class-completion.enableEmmetSupport": true,
+    "path-intellisense.autoSlashAfterDirectory": true,
+    "path-intellisense.extensionOnImport": true,
+    "javascript.suggest.completeFunctionCalls": true
 }
