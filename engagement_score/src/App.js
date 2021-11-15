@@ -1,22 +1,31 @@
 import React from "react";
 
-
-import BarChart from "./Components/BarChart";
-import LineChartOne from "./Components/LineChartOne";
-import LineChartTwo from "./Components/LineChartTwo";
+import LineChartOne from "./Components/LineChartOne/LineChartOne";
+import LineChartTwo from "./Components/LineChartTwo/LineChartTwo";
 import './App.css';
 
-
+import Date from './Components/Date.jsx';
 
 const App = () => {
+
+    const date = new Intl.DateTimeFormat('en-GB', { dateStyle: 'full'}).format(new Date())
+  
     return( 
     <div>
-    <BarChart />
-    <br></br>
-    <LineChartOne />
-    <br></br>
-    <LineChartTwo />
-    <br></br>
+        <div className="wholePage">
+            <div className="chart">
+                <div className="date">{date}</div>
+                <div className="charts">
+                    <LineChartOne /> <LineChartTwo />
+                </div>
+
+                <div className="button">
+                <span className="buttonText">Go To Top Five Table</span>
+                </div>
+                
+                <div className="footer"></div>
+            </div>
+        </div>
     </div>)
 }
 
