@@ -10,15 +10,26 @@ const page_token = process.env.PAGE_TOKEN;
 
 function LineChartOne() {
 
-    const [top, setTop] = useState('');
+    const [postDate, setPostDate] = useState([]);
+    const [reactionCount, setReactionCount] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        let posDat = [];
+        let reacCnt = [];
         axios
           .get(`https://graph.facebook.com/v12.0/%20111560247096449/published_posts?fields=created_time%2Cinsights%2Clikes%2Creactions%2Cmessage%2Cpermalink_url&access_token=EAARmuEuuogkBAIxhUAZBESdwSJcnPti6JlB9zZApBCAocZAN9LZBTy0NdbSsO8yhR2Xd6KKN51oI3VKiZA2dfmZAZCF91t9B7ryNmpv6s6UrCedH6THL7ZBE2DvrhJNUgOLWPXGOmXkXZA1a2oMuG5GKwclh7W41DsrGIEe3ZBvPkWsMiBHA5wxgkDj8ZAq8qvg5EnWZAL92xKeiQJBzZAa2HNjsO5EgrbM7Xnb4ZD`)
           .then((response) => {
-            setTop(response.data);
-            console.log(top)
+              for(const dataObj of response.data.data){
+                  posDat.push(response.data.data.created_time)
+                  reacCnt.push(response.data.data.likes.data.length)
+              }
+            setPostDate(response.data);
+            setReactionCount();
+            console.log(postDate)
+            console.log(posDat)
+            console.log(reacCnt)
+
           })
           .catch((error) => {
             console.log(error);
