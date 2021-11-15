@@ -15,9 +15,10 @@ function LineChartTwo() {
 
     useEffect(() => {
         axios
-          .get(`https://graph.facebook.com/v12.0/111560247096449?fields=id,name,app_id&access_token=EAARmuEuuogkBAElLZAqTq4WEQCGvH2eQnuFM4HkCdW1vs8kxERpFyACwZAXZCmJDTqyfGS3lxoT6FUc64AlyRl22wUy6JzRlnY1ZA4VZCrFlLH7K7XeZC7kH2xP2WkGlRQmotCWh3gZALMmZCBapZAR5kAdNHxGxIlfZA3MKTlKGmwA0IDEVsyr7yEhfwGTUHIZAuqhWoWWhyoRJCMPvEEIJ5CWcwTFG85NNXcZD`)
+          .get(`https://graph.facebook.com/v12.0/%20111560247096449/published_posts?fields=created_time%2Cinsights%2Clikes%2Creactions%2Cmessage%2Cpermalink_url&access_token=EAARmuEuuogkBAIxhUAZBESdwSJcnPti6JlB9zZApBCAocZAN9LZBTy0NdbSsO8yhR2Xd6KKN51oI3VKiZA2dfmZAZCF91t9B7ryNmpv6s6UrCedH6THL7ZBE2DvrhJNUgOLWPXGOmXkXZA1a2oMuG5GKwclh7W41DsrGIEe3ZBvPkWsMiBHA5wxgkDj8ZAq8qvg5EnWZAL92xKeiQJBzZAa2HNjsO5EgrbM7Xnb4ZD`)
           .then((response) => {
             setTop(response.data);
+            console.log(top)
           })
           .catch((error) => {
             console.log(error);
@@ -64,7 +65,7 @@ function LineChartTwo() {
                     width={100}
                     options={{
                         responsive: true,
-                        maintainAspectRatio: true,
+                        maintainAspectRatio: false,
                         scales: {
                             yAxes: [{
                                 ticks: {

@@ -15,6 +15,7 @@ const App = () => {
         <div className="wholePage">
             <div className="chart">
                 <div className="date">{date}</div>
+                <div className="title">Top Five Posts</div>
                 <div className="charts">
                     <LineChartOne /> <LineChartTwo />
                 </div>
