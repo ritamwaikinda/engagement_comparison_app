@@ -9,6 +9,12 @@ const page_token = process.env.PAGE_TOKEN;
 
 
 function LineChartOne() {
+    const [chartData, setChartData] = useState({});
+    const [chartDate, setChartDate] = useState([]);
+    const [likesCount, setLikesCount[[
+        
+    ]]] = useState([]);
+
 
     const [top, setTop] = useState('');
     const [isLoading, setIsLoading] = useState(true);
